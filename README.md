@@ -1,6 +1,8 @@
 # ScAllergen Mobile Application
 ![License](https://img.shields.io/badge/license-MIT-blue)
 
+The mobile application for the ScAllergen system - A smart allergen detection app for food safety.
+
 > **⚠️ IMPORTANT:** This is the **Frontend** of the application. The app also requires the **Backend** to be set up and running for allergen detection features to work. Please ensure you have completed the backend setup before using this app.
 > 
 > **Backend Repository:** [khangndct/ScAllergen-Backend](https://github.com/khangndct/ScAllergen-Backend)
@@ -8,13 +10,15 @@
 ## Table of Contents
 - [Introduction](#introduction)
 - [Backend Setup (Required)](#backend-setup-required)
-- [Frontend Installation](#frontend-installation)
-- [Docker Build](#docker-build)
+- [Clone Repository](#clone-repository)
+- [Installation Options](#installation-options)
+  - [Option A: Docker Build](#option-a-docker-build)
+  - [Option B: Manual Installation](#option-b-manual-installation)
 - [Usage](#usage)
 - [Project Structure](#project-structure)
 
 ## 1. Introduction
-ScAllergen is a Flutter-based mobile application that helps users identify potential allergens in food products through intelligent OCR scanning. The app captures ingredient lists from product labels and communicates with a **backend service** for fuzzy matching and graph-based allergen detection.
+NutriViet is a Flutter-based mobile application that helps users identify potential allergens in food products through intelligent OCR scanning. The app captures ingredient lists from product labels and communicates with a **backend service** for fuzzy matching and graph-based allergen detection.
 
 ### System Architecture
 This mobile app is the **frontend client** that works in conjunction with the **ScAllergen Backend** (Neo4j graph database + FastAPI server). The workflow is:
@@ -72,21 +76,125 @@ The backend handles:
 
 ---
 
-## 3. Frontend Installation
-Instructions for setting up the mobile app development environment.
+## 3. Clone Repository
 
-### 3.1 Requirements
+**Before proceeding with installation, clone the frontend repository:**
+
+```bash
+git clone https://github.com/tothanhdat2006/ScAllergen.git
+cd ScAllergen/src
+```
+
+Now you can choose your preferred installation method:
+- **[Option A: Docker Build](#option-a-docker-build)** - Recommended for quick APK generation without installing Flutter SDK
+- **[Option B: Manual Installation](#option-b-manual-installation)** - For development and testing with Flutter SDK
+
+---
+
+## 4. Installation Options
+
+### Option A: Docker Build
+
+The application can be built using Docker for consistent cross-platform compilation without installing Flutter SDK locally.
+
+#### Requirements
+- **[Docker Desktop](https://docs.docker.com/desktop/)** (or Docker Engine)
+- **✅ Backend Service Running** (See [Backend Setup](#backend-setup-required))
+- **Firebase Configuration** (google-services.json)
+- **Gemini API Key**
+
+#### Configuration Before Building
+
+Before building the Docker image, you must configure the required services:
+
+**1. Configure Backend API Endpoint**
+
+1. Open [lib/core/services/allergy_check_service.dart](lib/core/services/allergy_check_service.dart)
+2. Replace the `_baseUrl` with your backend URL:
+   ```dart
+   static const String _baseUrl = 'YOUR_BACKEND_URL_HERE';
+   ```
+   - Use the Ngrok URL from backend setup (e.g., `https://your-ngrok-subdomain.ngrok-free.dev`)
+   - Or use `http://10.0.2.2:8000` for Android emulator to access host machine's localhost
+
+> **Note:** Docker builds create a standalone APK, so the backend URL must be hardcoded or configured before building.
+
+**2. Configure Firebase**
+
+1. Create a Firebase project at [Firebase Console](https://console.firebase.google.com/)
+2. Add an Android app to your Firebase project
+3. Download `google-services.json` and place it in `android/app/`
+4. Enable Firebase Authentication and Cloud Firestore in Firebase Console
+
+**3. Configure Gemini API Key**
+
+Edit [lib/core/services/gemini_ocr_service.dart](lib/core/services/gemini_ocr_service.dart) and replace the default API key:
+```dart
+const String _apiKey = String.fromEnvironment('API_KEY',
+    defaultValue: 'YOUR_GEMINI_API_KEY_HERE');
+```
+
+**Get your Gemini API Key:**
+1. Visit [Google AI Studio](https://aistudio.google.com/app/apikey)
+2. Sign in to your Google account (or create one if needed)
+3. Click "Create API key" → "Select a Cloud Project" → "+ Create Project"
+4. Create and name your project
+5. Generate an API key and copy it
+6. Paste it in the `gemini_ocr_service.dart` file
+
+#### Build Steps
+
+**Using Build Scripts:**
+
+**On Windows:**
+```bash
+cd src
+.\build.bat
+```
+
+**On Linux/macOS:**
+```bash
+cd src
+chmod +x build.sh
+./build.sh
+```
+
+The script will:
+1. Build a Docker image with Flutter SDK
+2. Compile the Flutter app into a release APK
+3. Extract the APK to your current directory
+
+The compiled `app-release.apk` will be available in the `src/` folder.
+
+**Manual Docker Build:**
+
+> **⚠️ Important:** The Docker build process uses the configurations you set above. Make sure all settings are correct before building, as they will be compiled into the APK.
+
+```bash
+cd src
+docker build -t flutter-app .
+docker create --name temp-container flutter-app
+docker cp temp-container:/src/build/app/outputs/flutter-apk/app-release.apk .
+docker rm temp-container
+```
+
+---
+
+### Option B: Manual Installation
+
+For developers who want to run and debug the app locally with Flutter SDK.
+
+#### Requirements
 - **✅ Backend Service Running** (See [Backend Setup](#backend-setup-required))
 - **Flutter SDK** 3.9.2 or higher
 - **Dart SDK** (bundled with Flutter)
 - **Android Studio** or **VS Code** with Flutter extensions
-- **Git**
 - **Firebase Account** (for authentication services)
 - **Google Gemini API Key**
 
-### 3.2 Installation Steps
+#### Installation Steps
 
-#### 3.2.1. Install Flutter SDK (Windows)
+**1. Install Flutter SDK (Windows)**
 
 Download the latest stable release from the [Flutter SDK archive](https://docs.flutter.dev/release/archive) or [stable version](https://storage.googleapis.com/flutter_infra_release/releases/stable/windows/flutter_windows_3.38.5-stable.zip).
 
@@ -116,20 +224,13 @@ dart --version
 
 If these commands return version information, your installation is successful! If not, refer to the [Flutter installation troubleshooting](https://docs.flutter.dev/get-started/install/windows#troubleshooting) guide.
 
-#### 3.2.2. Clone the Repository
-
-```bash
-git clone https://github.com/tothanhdat2006/ScAllergen.git
-cd ScAllergen/src
-```
-
-#### 3.2.3. Install Dependencies
+**2. Install Dependencies**
 
 ```bash
 flutter pub get
 ```
 
-#### 3.2.4. Configure Backend API Endpoint
+**3. Configure Backend API Endpoint**
 
 **Update the backend URL in the app:**
 
@@ -141,14 +242,14 @@ flutter pub get
    - Use the Ngrok URL from backend setup (e.g., `https://your-ngrok-subdomain.ngrok-free.dev`)
    - Or use `http://localhost:8000` if testing on the same machine
 
-#### 3.2.5. Configure Firebase
+**4. Configure Firebase**
 
 1. Create a Firebase project at [Firebase Console](https://console.firebase.google.com/)
 2. Add Android/iOS apps to your Firebase project
 3. Download `google-services.json` (Android) and place it in `android/app/`
 4. Enable Firebase Authentication and Cloud Firestore in Firebase Console
 
-#### 3.2.6. Set Gemini API Key
+**5. Set Gemini API Key**
 
 The app requires a Gemini API key for OCR functionality. You can configure it in two ways:
 
@@ -170,7 +271,7 @@ Edit `lib/core/services/gemini_ocr_service.dart` and replace the default API key
 5. Copy the key by clicking in the button next to "Set up billing" 
 6. Paste to the .env file
 
-#### 3.2.7. Run the Application
+**6. Run the Application**
 
 **Ensure the backend is running before starting the app!**
 
@@ -186,50 +287,9 @@ flutter build apk --release --dart-define=API_KEY=your_api_key
 
 The APK will be located at `build/app/outputs/flutter-apk/app-release.apk`
 
-## 4. Docker Build
-
-The application can be built using Docker for consistent cross-platform compilation.
-
-### 4.1 Requirements
-- **Docker Desktop** (or Docker Engine)
-
-### 4.2 Build Steps
-
-#### 4.2.1 Build the APK using Docker:
-
-**On Windows:**
-```bash
-cd src
-.\build.bat
-```
-
-**On Linux/macOS:**
-```bash
-cd src
-chmod +x build.sh
-./build.sh
-```
-
-The script will:
-1. Build a Docker image with Flutter SDK
-2. Compile the Flutter app into a release APK
-3. Extract the APK to your current directory
-
-The compiled `app-release.apk` will be available in the `src/` folder.
-
-#### 4.2.2 Manual Docker Build:
-
-```bash
-cd src
-docker build -t flutter-app .
-docker create --name temp-container flutter-app
-docker cp temp-container:/src/build/app/outputs/flutter-apk/app-release.apk .
-docker rm temp-container
-```
-
 ## 5. Usage
 
-> **⚠️ CRITICAL:** Ensure the **ScAllergen Backend is running** before using the app. Without the backend.
+> **⚠️ CRITICAL:** Ensure the **ScAllergen Backend is running** before using the app.
 
 ### 5.1 Application Flow
 
