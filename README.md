@@ -1,82 +1,129 @@
-# ScAllergen Mobile Application
-![License](https://img.shields.io/badge/license-MIT-blue)
+# 🛡️ ScAllergen Mobile Application
 
-The mobile application for the ScAllergen system - A smart allergen detection app for food safety.
+<div align="center">
 
-> **⚠️ IMPORTANT:** This is the **Frontend** of the application. The app also requires the **Backend** to be set up and running for allergen detection features to work. Please ensure you have completed the backend setup before using this app.
+**Your personal food safety guardian powered by AI**
+
+Smart allergen detection through OCR scanning and graph-based allergen matching
+
+[![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+
+[🚀 Backend Repository](https://github.com/khangndct/ScAllergen-Backend) • [🏗️ Installation](#️-installation-options) • [✨ Features](#-key-features) • [📧 Contact](#-contact--support)
+
+</div>
+
+---
+
+> **⚠️ IMPORTANT:** This is the **Frontend** of the application. The app requires the **Backend** to be running for allergen detection features to work. Please ensure you have completed the backend setup before using this app.
 > 
 > **Backend Repository:** [khangndct/ScAllergen-Backend](https://github.com/khangndct/ScAllergen-Backend)
 
-## Table of Contents
-1. [Introduction](#1-introduction)
-2. [Backend Setup (Required)](#2-backend-setup-required)
-3. [Clone Repository](#3-clone-repository)
-4. [Installation Options](#4-installation-options)
-   4.1 [Option A: Docker Build](#option-a-docker-build)
-   4.2 [Option B: Manual Installation](#option-b-manual-installation)
-5. [Usage](#5-usage)
-6. [Project Structure](#6-project-structure)
+---
 
-## 1. Introduction
-NutriViet is a Flutter-based mobile application that helps users identify potential allergens in food products through intelligent OCR scanning. The app captures ingredient lists from product labels and communicates with a **backend service** for fuzzy matching and graph-based allergen detection.
+## 📑 Table of Contents
+
+- [About The Project](#-about-the-project)
+- [Key Features](#-key-features)
+- [Tech Stack](#-tech-stack)
+- [Getting Started](#-getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Backend Setup (Required)](#-backend-setup-required)
+  - [Installation Options](#-installation-options)
+- [Usage Guide](#-usage-guide)
+- [Project Structure](#-project-structure)
+- [Development Commands](#-development-commands)
+- [Environment Configuration](#-environment-configuration)
+- [Troubleshooting](#-troubleshooting)
+- [License](#-license)
+- [Contact & Support](#-contact--support)
+
+---
+
+## 📖 About The Project
+
+**ScAllergen** is a Flutter-based mobile application designed to protect users from potentially harmful food allergens through intelligent OCR scanning and graph-based detection. The app directly addresses the critical challenge of identifying allergens in food products, especially when ingredient lists are in different languages or contain complex terminology.
+
+### The Problem We Solve
+
+- ⚠️ **Life-threatening allergies** require constant vigilance when shopping for food
+- 🌍 **Language barriers** make it difficult to read foreign ingredient labels
+- 🔍 **Complex ingredient names** are hard to identify and match to known allergens
+- ⏱️ **Time-consuming** manual checking of every product label
+
+### Our Solution
+
+ScAllergen  reduces the risk of allergen exposure while making food shopping faster and safer. The app provides accurate allergen detection with multilingual support, empowering users to make informed decisions about their food choices and protecting them from potentially life-threatening allergic reactions.
 
 ### System Architecture
+
 This mobile app is the **frontend client** that works in conjunction with the **ScAllergen Backend** (Neo4j graph database + FastAPI server). The workflow is:
-1. **Mobile App** captures and OCR scans ingredient photos using Gemini AI
-2. **Mobile App** sends extracted ingredients to the **Backend API**
-3. **Backend** performs fuzzy matching and graph traversal to detect allergens
-4. **Mobile App** displays results and warnings to the user
 
-Key features include:
-- **Camera OCR:** Uses Google Gemini AI to extract and translate ingredient lists from product photos
-- **Allergen Detection:** Sends ingredients to backend for graph-based allergen matching (requires backend)
-- **User Profiles:** Manages user allergen preferences and health profiles
-- **Real-time Alerts:** Provides instant warnings about potential allergen matches
-- **Multi-language Support:** Automatically translates Vietnamese ingredients to English
-- **News Feed:** Displays allergen-related health news and updates
+1. 📸 **Mobile App** captures and OCR scans ingredient photos using Gemini AI
+2. 📤 **Mobile App** sends extracted ingredients to the **Backend API**
+3. 🔍 **Backend** performs fuzzy matching and graph traversal to detect allergens
+4. ⚡ **Mobile App** displays results and warnings to the user
 
-### Technologies
-- **Framework:** Flutter 3.9.2+ (Dart SDK)
-- **AI/ML:** Google Generative AI (Gemini 2.5 Flash)
-- **Authentication:** Firebase Auth
-- **Database:** Cloud Firestore
-- **Containerization:** Docker
+---
 
-## 2. Backend Setup (Required)
+## ✨ Key Features
 
-**Before installing the mobile app, you MUST set up and run the backend service.**
+| Feature | Description |
+|---------|-------------|
+| 📸 **AI-Powered OCR Scanning** | Capture ingredient lists from product labels using advanced Google Gemini AI technology |
+| 🔍 **Graph-Based Allergen Detection** | Sends ingredients to backend for sophisticated fuzzy matching and Neo4j graph traversal |
+| 👤 **User Health Profiles** | Manages personal allergen preferences and dietary restrictions |
+| ⚡ **Fast Alerts** | Provides instant warnings about potential allergen matches with detailed safety information |
+| 🌐 **Multi-language Support** | Automatically translates ingredients to English for accurate matching |
+| 📰 **News Feed** | Stay updated with allergen-related health news and food safety alerts |
 
-The backend handles:
-- Fuzzy matching of ingredient names to the FoodOn ontology
-- Graph-based allergen detection via Neo4j
-- API endpoints for allergen checking
+---
 
-### Backend Setup Steps:
+## 🏗️ Tech Stack
 
-1. **Clone the backend repository:**
-   ```bash
-   git clone https://github.com/khangndct/ScAllergen-Backend.git
-   cd ScAllergen-Backend
-   ```
+### Frontend & Mobile
+- **[Flutter](https://flutter.dev/)** (v3.9.2+) - Cross-platform mobile framework
+- **[Dart](https://dart.dev/)** (SDK) - Programming language for Flutter
+- **[Firebase Auth](https://firebase.google.com/products/auth)** - User authentication and authorization
+- **[Cloud Firestore](https://firebase.google.com/products/firestore)** - NoSQL cloud database for user data
 
-2. **Follow the complete backend setup instructions** in the backend repository's README:
-   - Configure environment variables (Neo4j password, Ngrok token)
-   - Build and start Docker containers
-   - Initialize the database with FoodOn ontology
-   - Verify backend is running
+### OCR
+- **[Google Gemini AI](https://deepmind.google/models/gemini/)** (2.5 Flash) - Advanced AI for OCR and text extraction
 
-3. **Obtain the backend API URL:**
-   - After starting the backend, get the public URL from Ngrok dashboard at `http://localhost:4040`
-   - Or use `localhost:8000` if testing locally on the same machine
-   - You'll need this URL to configure the mobile app
+### Backend Integration
+- **[FastAPI](https://fastapi.tiangolo.com/)** - High-performance Python backend API
+- **[Neo4j](https://neo4j.com/)** - Graph database for allergen relationship mapping
+- **[FoodOn Ontology](https://foodon.org)** - Food ingredient classification system
 
-4. **Keep the backend running** while using the mobile app
+### Tools
+- **[Docker](https://www.docker.com/)** - Containerization for consistent builds
+- **[Android Studio](https://developer.android.com/studio)** - Android development IDE
+- **[VS Code](https://code.visualstudio.com/)** - Lightweight code editor with Flutter extensions
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+Before you begin, ensure you have the following:
+
+- ⚠️ **Backend Service** - ScAllergen Backend **must** be running ([Setup Guide](https://github.com/khangndct/ScAllergen-Backend))
+- **Google Gemini API Key** - ([Get one here](https://aistudio.google.com/app/apikey))
+- **Firebase Project** - ([Create here](https://console.firebase.google.com/))
+
+**Choose one installation method:**
+- **Docker** - Quick APK build without Flutter SDK
+- **Flutter SDK** - For development and local testing
+
+---
+
+## 🛠️ Backend Setup (Required)
 
 > **📖 Full Backend Documentation:** [khangndct/ScAllergen-Backend](https://github.com/khangndct/ScAllergen-Backend)
 
 ---
 
-## 3. Clone Repository
+## 🏗️ Installation Options
 
 **Before proceeding with installation, clone the frontend repository:**
 
@@ -85,23 +132,22 @@ git clone https://github.com/tothanhdat2006/ScAllergen.git
 cd ScAllergen/src
 ```
 
-Now you can choose your preferred installation method:
-- **[Option A: Docker Build](#option-a-docker-build)** - Recommended for quick APK generation without installing Flutter SDK
-- **[Option B: Manual Installation](#option-b-manual-installation)** - For development and testing with Flutter SDK
+Now choose your preferred installation method:
+- **[Option A: Docker Build](#option-a-docker-build-🐳)** - Recommended for quick APK generation
+- **[Option B: Manual Installation](#option-b-manual-installation-🖥️)** - For development and testing
 
----
+### Option A: Docker Build 🐳
 
-## 4. Installation Options
-
-### 4.1. Option A: Docker Build
-
-The application can be built using Docker for consistent cross-platform compilation without installing Flutter SDK locally.
+Build the application using Docker for consistent cross-platform compilation **without installing Flutter SDK locally**.
 
 #### Requirements
-- **[Docker Desktop](https://docs.docker.com/desktop/)** (or Docker Engine)
-- **✅ Backend Service Running** (See [Backend Setup](#backend-setup-required))
-- **Firebase Configuration** (google-services.json)
-- **Gemini API Key**
+
+| Requirement | Description |
+|-------------|-------------|
+| **[Docker Desktop](https://docs.docker.com/desktop/)** | Docker Engine for containerization |
+| **Backend Service** | Must be running ⚠️ |
+| **Firebase Config** | `google-services.json` file |
+| **Gemini API Key** | For OCR functionality |
 
 #### Configuration Before Building
 
@@ -144,31 +190,37 @@ const String _apiKey = String.fromEnvironment('API_KEY',
 
 #### Build Steps
 
-**Using Build Scripts:**
+> **⚠️ Important:** The Docker build process uses the configurations you set above. Make sure all settings are correct before building, as they will be compiled into the APK.
 
-**On Windows:**
+**Using Build Scripts (Recommended):**
+
+<details>
+<summary><b>Windows</b></summary>
+
 ```bash
 cd src
 .\build.bat
 ```
+</details>
 
-**On Linux/macOS:**
+<details>
+<summary><b>Linux/macOS</b></summary>
+
 ```bash
 cd src
 chmod +x build.sh
 ./build.sh
 ```
+</details>
 
 The script will:
-1. Build a Docker image with Flutter SDK
-2. Compile the Flutter app into a release APK
-3. Extract the APK to your current directory
+1. ✅ Build a Docker image with Flutter SDK
+2. ✅ Compile the Flutter app into a release APK
+3. ✅ Extract the APK to your current directory
 
-The compiled `app-release.apk` will be available in the `src/` folder.
+**Output:** The compiled `app-release.apk` will be available in the `src/` folder.
 
 **Manual Docker Build:**
-
-> **⚠️ Important:** The Docker build process uses the configurations you set above. Make sure all settings are correct before building, as they will be compiled into the APK.
 
 ```bash
 cd src
@@ -180,17 +232,20 @@ docker rm temp-container
 
 ---
 
-### 4.2. Option B: Manual Installation
+### Option B: Manual Installation 🖥️
 
 For developers who want to run and debug the app locally with Flutter SDK.
 
 #### Requirements
-- **✅ Backend Service Running** (See [Backend Setup](#backend-setup-required))
-- **Flutter SDK** 3.9.2 or higher
-- **Dart SDK** (bundled with Flutter)
-- **Android Studio** or **VS Code** with Flutter extensions
-- **Firebase Account** (for authentication services)
-- **Google Gemini API Key**
+
+| Requirement | Description |
+|-------------|-------------|
+| **Backend Service** | Must be running ([Setup Guide](#-backend-setup-required)) |
+| **Flutter SDK** | v3.9.2 or higher |
+| **Dart SDK** | Bundled with Flutter |
+| **IDE** | Android Studio or VS Code with Flutter extensions |
+| **Firebase Account** | For authentication services |
+| **Gemini API Key** | For OCR functionality |
 
 #### Installation Steps
 
@@ -289,55 +344,72 @@ flutter build apk --release --dart-define=API_KEY=your_api_key
 
 The APK will be located at `build/app/outputs/flutter-apk/app-release.apk`
 
-## 5. Usage
+---
+
+## 📱 Usage Guide
 
 > **⚠️ CRITICAL:** Ensure the **ScAllergen Backend is running** before using the app.
 
-### 5.1 Application Flow
+### Application Flow 🔄
 
-1. **Welcome/Authentication:**
+1. **Welcome/Authentication**
    - First-time users see a welcome screen
    - Login with email/password or Google Sign-In
    - Register new accounts with email verification
 
-2. **Health Profile Setup:**
+2. **Health Profile Setup**
    - Configure personal allergen list
    - Save dietary preferences
    - View allergen statistics
 
-3. **Scan Ingredients:**
+3. **Scan Ingredients**
    - Open the scanner from the home screen
    - Capture a photo of the ingredient list
    - Wait for OCR processing (Gemini AI extracts text)
    - Ingredients are sent to the backend for allergen matching
 
-4. **View Results:**
+4. **View Results**
    - See matched allergens highlighted
    - View detailed allergen information
    - Get safety recommendations
 
-5. **Browse News:**
+5. **Browse News**
    - Read health and allergen-related articles
    - Stay updated on food safety news
 
-### 5.2 Backend Integration
+
+### Backend Integration 🔗
 
 **The app requires an active connection to the ScAllergen backend for full functionality.**
 
-#### Backend Communication:
-- **API Endpoint:** Configured in [lib/core/services/allergy_check_service.dart](lib/core/services/allergy_check_service.dart)
-- **Primary Endpoint:** `POST /check`
-  - Sends: User's allergen list + scanned ingredients
-  - Receives: Detailed allergen match results obtained after graph querying
+#### Backend Communication
 
+| Component | Details |
+|-----------|---------|
+| **API Endpoint** | Configured in [lib/core/services/allergy_check_service.dart](lib/core/services/allergy_check_service.dart) |
+| **Primary Endpoint** | `POST /check` |
+| **Request** | User's allergen list + scanned ingredients |
+| **Response** | Detailed allergen match results from graph querying |
 
-#### How to Verify Backend Connection:
-1. Ensure backend containers are running: `docker compose ps` (in backend directory)
-2. Check backend health: Visit `http://localhost:8000` (should return a health check message)
-3. Verify Ngrok tunnel: Visit `http://localhost:4040` to see the public URL
-4. Test API: Use the backend's Swagger UI at `http://localhost:8000/docs`
+#### How to Verify Backend Connection
 
-## 6. Project Structure
+1. **Check containers are running**
+   ```bash
+   docker compose ps  # In backend directory
+   ```
+
+2. **Verify backend health**
+   - Visit `http://localhost:8000` (should return a health check message)
+
+3. **Check Ngrok tunnel**
+   - Visit `http://localhost:4040` to see the public URL
+
+4. **Test API**
+   - Use the backend's Swagger UI at `http://localhost:8000/docs`
+
+---
+
+## 🗂️ Project Structure
 ```
 src/
 ├── lib/
@@ -391,3 +463,119 @@ src/
 └── pubspec.yaml                                # Flutter dependencies
 ```
 
+---
+
+## 🔐 Environment Configuration
+
+### Required Variables
+
+| Variable | Description | How to Obtain |
+|----------|-------------|---------------|
+| `API_KEY` | Google Gemini API key for OCR | [Google AI Studio](https://aistudio.google.com/app/apikey) |
+| `_baseUrl` | Backend API endpoint URL | Ngrok URL from backend setup |
+| `google-services.json` | Firebase configuration file | [Firebase Console](https://console.firebase.google.com/) |
+
+### Configuration Locations
+
+```dart
+// Backend API URL
+// File: lib/core/services/allergy_check_service.dart
+static const String _baseUrl = 'YOUR_BACKEND_URL_HERE';
+
+// Gemini API Key
+// File: lib/core/services/gemini_ocr_service.dart
+const String _apiKey = String.fromEnvironment('API_KEY',
+    defaultValue: 'YOUR_GEMINI_API_KEY_HERE');
+```
+
+---
+
+## 🆘 Troubleshooting
+
+### Common Issues
+
+<details>
+<summary><b>Issue: Backend connection fails</b></summary>
+
+- ✅ Verify backend is running: `docker compose ps` in backend directory
+- ✅ Check `_baseUrl` in [allergy_check_service.dart](lib/core/services/allergy_check_service.dart)
+- ✅ Ensure Ngrok tunnel is active: visit `http://localhost:4040`
+- ✅ Test API endpoint: `http://localhost:8000/docs`
+</details>
+
+<details>
+<summary><b>Issue: Google Gemini API errors</b></summary>
+
+- ✅ Confirm `API_KEY` is valid and correctly set
+- ✅ Check API quota and billing in [Google Cloud Console](https://console.cloud.google.com/)
+- ✅ Verify API is enabled in your Google Cloud project
+- ✅ Ensure no rate limiting is occurring
+</details>
+
+<details>
+<summary><b>Issue: Firebase authentication fails</b></summary>
+
+- ✅ Verify `google-services.json` is in `android/app/` directory
+- ✅ Check Firebase Authentication is enabled in Firebase Console
+- ✅ Ensure Cloud Firestore is properly configured
+- ✅ Verify SHA-1 fingerprint is added to Firebase project (for Google Sign-In)
+</details>
+
+<details>
+<summary><b>Issue: Docker build fails</b></summary>
+
+- ✅ Ensure Docker Desktop is running
+- ✅ Check all configuration files are in place before building
+- ✅ Verify disk space is sufficient
+- ✅ Try cleaning Docker: `docker system prune -a`
+</details>
+
+<details>
+<summary><b>Issue: Flutter doctor shows errors</b></summary>
+
+- ✅ Run `flutter doctor -v` for detailed diagnosis
+- ✅ Install missing dependencies as suggested
+- ✅ Ensure Android SDK is properly installed
+- ✅ Check Java/JDK version compatibility
+</details>
+
+---
+
+## 🔗 Useful Resources
+
+- 📖 [Flutter Documentation](https://docs.flutter.dev/)
+- 🎯 [Dart Language Tour](https://dart.dev/guides/language/language-tour)
+- 🔥 [Firebase for Flutter](https://firebase.flutter.dev/)
+- 🤖 [Google Gemini API Docs](https://ai.google.dev/docs)
+- 🐳 [Docker Documentation](https://docs.docker.com/)
+- 🌐 [Neo4j Graph Database](https://neo4j.com/docs/)
+- 📊 [FoodOn Ontology](https://foodon.org/)
+
+---
+
+## 📝 License
+
+This project is distributed under the **MIT License**. See the [LICENSE](LICENSE) file for more information.
+
+---
+
+## 📧 Contact & Support
+
+- **GitHub**: [@tothanhdat2006](https://github.com/tothanhdat2006)
+- **Frontend Repository**: [ScAllergen](https://github.com/tothanhdat2006/ScAllergen)
+- **Backend Repository**: [ScAllergen-Backend](https://github.com/khangndct/ScAllergen-Backend)
+- **Report Issues**: [GitHub Issues](https://github.com/tothanhdat2006/ScAllergen/issues)
+
+---
+
+## 🙏 Acknowledgments
+
+- [FoodOn](https://foodon.org/) for food ontology
+
+---
+
+<div align="center">
+
+**Made with ❤️ for safer food choices**
+
+</div>
