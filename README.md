@@ -8,14 +8,14 @@ The mobile application for the ScAllergen system - A smart allergen detection ap
 > **Backend Repository:** [khangndct/ScAllergen-Backend](https://github.com/khangndct/ScAllergen-Backend)
 
 ## Table of Contents
-- [Introduction](#introduction)
-- [Backend Setup (Required)](#backend-setup-required)
-- [Clone Repository](#clone-repository)
-- [Installation Options](#installation-options)
-  - [Option A: Docker Build](#option-a-docker-build)
-  - [Option B: Manual Installation](#option-b-manual-installation)
-- [Usage](#usage)
-- [Project Structure](#project-structure)
+1. [Introduction](#1-introduction)
+2. [Backend Setup (Required)](#2-backend-setup-required)
+3. [Clone Repository](#3-clone-repository)
+4. [Installation Options](#4-installation-options)
+   4.1 [Option A: Docker Build](#option-a-docker-build)
+   4.2 [Option B: Manual Installation](#option-b-manual-installation)
+5. [Usage](#5-usage)
+6. [Project Structure](#6-project-structure)
 
 ## 1. Introduction
 NutriViet is a Flutter-based mobile application that helps users identify potential allergens in food products through intelligent OCR scanning. The app captures ingredient lists from product labels and communicates with a **backend service** for fuzzy matching and graph-based allergen detection.
@@ -93,7 +93,7 @@ Now you can choose your preferred installation method:
 
 ## 4. Installation Options
 
-### Option A: Docker Build
+### 4.1. Option A: Docker Build
 
 The application can be built using Docker for consistent cross-platform compilation without installing Flutter SDK locally.
 
@@ -180,7 +180,7 @@ docker rm temp-container
 
 ---
 
-### Option B: Manual Installation
+### 4.2. Option B: Manual Installation
 
 For developers who want to run and debug the app locally with Flutter SDK.
 
@@ -263,8 +263,10 @@ Edit `lib/core/services/gemini_ocr_service.dart` and replace the default API key
 
 **Get your Gemini API Key:**
 1. Visit [Google AI Studio](https://aistudio.google.com/app/apikey)
-1.1 Sign in Google account and proceed the next step
-1.2 If you don't have an account, sign up and proceed the next step
+
+   +) 1.1 Sign in Google account and proceed the next step
+   +) 1.2 If you don't have an account, sign up and proceed the next step
+
 2. Click on "Create API key" -> Click on "Select a Cloud Project" and click on the "+ Create Project" in the dropdown
 3. Create a project
 4. Generate an API key by naming your key and choose the newly created project
@@ -335,7 +337,7 @@ The APK will be located at `build/app/outputs/flutter-apk/app-release.apk`
 3. Verify Ngrok tunnel: Visit `http://localhost:4040` to see the public URL
 4. Test API: Use the backend's Swagger UI at `http://localhost:8000/docs`
 
-## Project Structure
+## 6. Project Structure
 ```
 src/
 ├── lib/
