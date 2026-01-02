@@ -1,7 +1,7 @@
 FROM ghcr.io/cirruslabs/flutter:stable
 
-WORKDIR /src
-COPY pubspec.* ./
+WORKDIR /app
+COPY src/pubspec.* ./
 RUN flutter pub get
-COPY . .
+COPY src/ .
 RUN flutter build apk --release

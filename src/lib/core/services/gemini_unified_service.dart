@@ -8,7 +8,7 @@ import 'package:google_generative_ai/google_generative_ai.dart';
 
 class GeminiUnifiedScanner {
   static const String _modelId = 'gemini-2.5-flash';
-  static const String _apiKey = String.fromEnvironment('API_KEY');
+  static const String _apiKey = String.fromEnvironment('API_KEY', defaultValue: 'AIzaSyCBum_-oNIeM8fJpvtkv4-aLRFVUiIG1Zs');
 
   late final GenerativeModel _model;
 

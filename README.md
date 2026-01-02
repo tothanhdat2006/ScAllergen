@@ -160,9 +160,8 @@ Before building the Docker image, you must configure the required services:
    ```dart
    static const String _baseUrl = 'YOUR_BACKEND_URL_HERE';
    ```
-   - Use the Ngrok URL from backend setup (e.g., `https://your-ngrok-subdomain.ngrok-free.dev`)
-   - Or use `http://10.0.2.2:8000` for Android emulator to access host machine's localhost
-
+   - Use the Ngrok URL from backend setup when access http://localhost:4040 (e.g., `https://your-ngrok-subdomain.ngrok-free.dev`)
+   
 > **Note:** Docker builds create a standalone APK, so the backend URL must be hardcoded or configured before building.
 
 **2. Configure Firebase**
@@ -170,14 +169,14 @@ Before building the Docker image, you must configure the required services:
 1. Create a Firebase project at [Firebase Console](https://console.firebase.google.com/)
 2. Add an Android app to your Firebase project
 3. Download `google-services.json` and place it in `android/app/`
-4. Enable Firebase Authentication and Cloud Firestore in Firebase Console
+4. Enable Firebase Authentication and Firestore Database + Storage (required billing information) in Test mode inside Firebase Console
 
 **3. Configure Gemini API Key**
 
-Edit [lib/core/services/gemini_ocr_service.dart](lib/core/services/gemini_ocr_service.dart) and replace the default API key:
+Edit [lib/core/services/gemini_ocr_service.dart](lib/core/services/gemini_ocr_service.dart) and replace the defaultValue key:
 ```dart
 const String _apiKey = String.fromEnvironment('API_KEY',
-    defaultValue: 'YOUR_GEMINI_API_KEY_HERE');
+    defaultValue: 'YOUR_API_KEY_HERE');
 ```
 
 **Get your Gemini API Key:**
@@ -198,7 +197,7 @@ const String _apiKey = String.fromEnvironment('API_KEY',
 <summary><b>Windows</b></summary>
 
 ```bash
-cd src
+# at root folder
 .\build.bat
 ```
 </details>
@@ -207,7 +206,7 @@ cd src
 <summary><b>Linux/macOS</b></summary>
 
 ```bash
-cd src
+# at root folder
 chmod +x build.sh
 ./build.sh
 ```
@@ -218,12 +217,12 @@ The script will:
 2. ✅ Compile the Flutter app into a release APK
 3. ✅ Extract the APK to your current directory
 
-**Output:** The compiled `app-release.apk` will be available in the `src/` folder.
+**Output:** The compiled `app-release.apk` will be available in the root folder.
 
 **Manual Docker Build:**
 
 ```bash
-cd src
+# at root folder
 docker build -t flutter-app .
 docker create --name temp-container flutter-app
 docker cp temp-container:/src/build/app/outputs/flutter-apk/app-release.apk .

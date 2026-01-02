@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:NutriViet/core/models/allergy_match_result.dart';
 
 class AllergyCheckService {
-  static const String _baseUrl = 'YOUR-NGROK-URL-HERE';
+  static const String _baseUrl = 'https://5505d98e9b9d.ngrok-free.app';
 
   static Future<AllergyMatchResult> checkAllergy({
     required List<String> userAllergens,
