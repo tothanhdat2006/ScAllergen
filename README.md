@@ -553,9 +553,17 @@ const String _apiKey = String.fromEnvironment('API_KEY',
 
 ---
 
-## 📝 License
+## Contributors
 
-This project is distributed under the **MIT License**. See the [LICENSE](LICENSE) file for more information.
+This project was developed by group "Nem Chua":
+
+- **Ngo Tien Binh** - Led the mobile application design and development of the user interface.
+
+- **To Thanh Dat** - Led the overall system pipeline design and was primarily responsible for the development and evaluation of the Fuzzy matching algorithms.
+
+- **Phung Anh Khang** - Contributed to the construction and refinement of the food ontology and the Graph query module, and assisted with data preparation and experimental evaluation.
+
+- **Nguyen Hoang Phuc Thinh** - Led the development of the OCR, including the implementation of the Gemini 2.5 Flash API, and also contributed to the development of the mobile application interface.
 
 ---
 
@@ -576,6 +584,8 @@ This project is distributed under the **MIT License**. See the [LICENSE](LICENSE
 
 <div align="center">
 
-**Made with ❤️ for safer food choices**
+**Made with ❤️ to help job seekers succeed**
+
+⭐ Star this repo if you find it helpful!
 
 </div>

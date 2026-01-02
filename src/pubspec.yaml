@@ -1,0 +1,45 @@
+name: NutriViet
+description: App quét bảng thành phần & cảnh báo nguy hiểm
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_native_splash: ^2.4.7
+  http: ^1.6.0
+  xml: ^6.6.1
+  webview_flutter: ^4.13.0
+  cached_network_image: ^3.4.1
+  # Auth
+  shared_preferences: ^2.2.2
+  firebase_core: ^4.2.1
+  firebase_auth: ^6.1.2
+  flutter_localizations:
+    sdk: flutter
+  cloud_firestore: ^6.1.0
+  firebase_storage: ^13.0.4
+  google_sign_in: ^6.2.1
+  intl: ^0.20.2
+  fl_chart: ^1.1.1
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  flutter_image_compress: ^2.4.0
+  camera: ^0.11.3
+  image_picker: ^1.0.7
+  google_generative_ai: ^0.4.7
+  uuid: ^4.5.1
+  timeago: ^3.7.1
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  generate: true
+
+flutter_native_splash:
