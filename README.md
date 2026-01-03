@@ -133,10 +133,10 @@ cd ScAllergen/src
 ```
 
 Now choose your preferred installation method:
-- **[Option A: Docker Build](#option-a-docker-build-🐳)** - Recommended for quick APK generation
-- **[Option B: Manual Installation](#option-b-manual-installation-🖥️)** - For development and testing
+- **[Option A: Docker Build (Recommended)](#option-a-docker-build-recommended-)** - Recommended for quick APK generation
+- **[Option B: Manual Installation](#option-b-manual-installation-)** - For development and testing
 
-### Option A: Docker Build 🐳
+### Option A: Docker Build (Recommended) 🐳
 
 Build the application using Docker for consistent cross-platform compilation **without installing Flutter SDK locally**.
 
@@ -167,9 +167,21 @@ Before building the Docker image, you must configure the required services:
 **2. Configure Firebase**
 
 1. Create a Firebase project at [Firebase Console](https://console.firebase.google.com/)
-2. Add an Android app to your Firebase project
-3. Download `google-services.json` and place it in `android/app/`
-4. Enable Firebase Authentication and Firestore Database + Storage (required billing information) in Test mode inside Firebase Console
+2. Add an Android app to your Firebase project:
+   - Register your app with package name: `com.nemchua.scallergen` (or your custom package name)
+   - Download `google-services.json` and place it in `android/app/`
+3. Enable required Firebase services:
+   - Go to **Authentication** → Enable Email/Password and Google Sign-In providers
+   - Go to **Firestore Database** → Create database in **Test mode**
+   - Go to **Storage** → Set up Cloud Storage in **Test mode** (requires billing information)
+4. (Optional: if you want to login via google mail) Add SHA-1 fingerprint for Google Sign-In:
+   - Generate SHA-1 key:
+     - **Windows:** `keytool -list -v -alias androiddebugkey -keystore "%USERPROFILE%\.android\debug.keystore"`
+     - **macOS/Linux:** `keytool -list -v -alias androiddebugkey -keystore ~/.android/debug.keystore`
+     - Default password: `android`
+   - Copy the SHA-1 fingerprint from the output
+   - In Firebase Console: **Project Settings** → **General** → **Your Apps** (Android) → Click **"Add fingerprint"** → Paste SHA-1
+   - Download the updated `google-services.json` and replace the file in `android/app/`
 
 **3. Configure Gemini API Key**
 
@@ -299,9 +311,30 @@ flutter pub get
 **4. Configure Firebase**
 
 1. Create a Firebase project at [Firebase Console](https://console.firebase.google.com/)
-2. Add Android/iOS apps to your Firebase project
-3. Download `google-services.json` (Android) and place it in `android/app/`
-4. Enable Firebase Authentication and Cloud Firestore in Firebase Console
+2. Add an Android app to your Firebase project:
+   - Register your app with package name: `com.example.scallergen` (or your custom package name)
+   - Download `google-services.json` and place it in `android/app/`
+3. Enable required Firebase services:
+   - Go to **Authentication** → Enable Email/Password and Google Sign-In providers
+   - Go to **Firestore Database** → Create database in **Test mode**
+   - Go to **Storage** → Set up Cloud Storage in **Test mode** (requires billing information)
+4. (Optional: if you want to login via google mail) Add SHA-1 fingerprint (required for Google Sign-In and release builds):
+   - Generate debug SHA-1 key:
+     
+     **Windows:**
+     ```bash
+     keytool -list -v -alias androiddebugkey -keystore "%USERPROFILE%\.android\debug.keystore"
+     ```
+     
+     **macOS/Linux:**
+     ```bash
+     keytool -list -v -alias androiddebugkey -keystore ~/.android/debug.keystore
+     ```
+     
+     Password: `android`
+   - Copy the SHA-1 fingerprint from the output
+   - In Firebase Console: **Project Settings** → **General** → **Your Apps** (Android) → Click **"Add fingerprint"** → Paste SHA-1
+   - Download the updated `google-services.json` and replace the existing file in `android/app/`
 
 **5. Set Gemini API Key**
 
@@ -331,15 +364,41 @@ Edit `lib/core/services/gemini_ocr_service.dart` and replace the default API key
 
 **Ensure the backend is running before starting the app!**
 
-**For Android:**
+**For Android (Debug):**
 ```bash
 flutter run
 ```
 
 **For Release Build:**
-```bash
-flutter build apk --release --dart-define=API_KEY=your_api_key
-```
+
+Before building a release APK, configure the SHA-1 fingerprint:
+
+1. **Generate SHA-1 key for release:**
+   
+   **Windows:**
+   ```bash
+   keytool -list -v -alias androiddebugkey -keystore "%USERPROFILE%\.android\debug.keystore"
+   ```
+   
+   **macOS/Linux:**
+   ```bash
+   keytool -list -v -alias androiddebugkey -keystore ~/.android/debug.keystore
+   ```
+   
+   Password: `android`
+   
+2. **Add SHA-1 to Firebase:**
+   - Go to [Firebase Console](https://console.firebase.google.com/) → **Project Settings** → **General** → **Your Apps** (Android)
+   - Click **"Add fingerprint"** and paste the SHA-1 key
+   
+3. **Update Configuration:**
+   - Download the updated `google-services.json` file from Firebase
+   - Replace the existing file in your `android/app/` folder
+
+4. **Build the APK:**
+   ```bash
+   flutter build apk --release --dart-define=API_KEY=your_api_key
+   ```
 
 The APK will be located at `build/app/outputs/flutter-apk/app-release.apk`
 

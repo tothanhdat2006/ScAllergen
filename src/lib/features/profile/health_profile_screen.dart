@@ -8,6 +8,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:NutriViet/core/constants/colors.dart';
+import 'package:NutriViet/core/services/allergy_check_service.dart';
 import 'package:NutriViet/features/home/main_home_screen.dart';
 
 class HealthProfileScreen extends StatefulWidget {
@@ -248,7 +249,7 @@ class _HealthProfileScreenState extends State<HealthProfileScreen> {
           optionsBuilder: (TextEditingValue textEditingValue) async {
             if (textEditingValue.text.length < 2) return const Iterable<String>.empty();
             final String query = textEditingValue.text.trim();
-            final Uri url = Uri.parse('https://fuscous-actiniform-javion.ngrok-free.dev/node?text=$query');
+            final Uri url = Uri.parse('${AllergyCheckService.baseUrl}/node?text=$query');
             try {
               final response = await http.get(url);
               if (response.statusCode == 200) {
