@@ -75,6 +75,7 @@ This mobile app is the **frontend client** that works in conjunction with the **
 | ⚡ **Fast Alerts** | Provides instant warnings about potential allergen matches with detailed safety information |
 | 🌐 **Multi-language Support** | Automatically translates ingredients to English for accurate matching |
 | 📰 **News Feed** | Stay updated with allergen-related health news and food safety alerts |
+| 👤 **Community Forum** | Share your photos with the community and perform "safety check" on their images compared to your conditions |
 
 ---
 
@@ -625,6 +626,21 @@ This project was developed by group "Nem Chua":
 
 ---
 
+## About LLM Usage
+Exclude this section, all other sections are written with help from LLM. However, we always review LLM responses before apply it in the report. In detail, we use LLM to suggest grammar structure, vocabularies and reviewed mistakes from our drafts. Then, we review the changes and suggestions made by LLM and only apply them if they aligns with our intentions.
+
+The codebase is written in help from LLM. We manually design the pipeline and workflow before letting LLM suggests the code. Subsequently, the suggestion are taken into consideration before apply it. However, there maybe cases where our consideration failed to spot the issues in the code due to shortage of time. 
+
+---
+
+## A little about this project
+We can say that our application is approximately 80% different than old one in both features and UI.
+This application is planned, built and tested within really short time (< 3 weeks).
+We really did our best and dedicated all of our time in this project.
+If this project is not as good as you expected, ... we really don't have anything to argue.
+
+---
+
 ## 📧 Contact & Support
 
 - **GitHub**: [@tothanhdat2006](https://github.com/tothanhdat2006)
@@ -636,14 +652,14 @@ This project was developed by group "Nem Chua":
 
 ## 🙏 Acknowledgments
 
-- [FoodOn](https://foodon.org/) for food ontology
+- [FoodOn](https://foodon.org/) for valuable food ontology
 
 ---
 
 <div align="center">
 
-**Made with ❤️ to help job seekers succeed**
+**Made with ❤️**
 
-⭐ Star this repo if you find it helpful!
+⭐ Star this repo if you find it helpful or inspirational!
 
 </div>
