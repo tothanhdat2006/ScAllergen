@@ -3,10 +3,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:NutriViet/core/constants/colors.dart';
-import 'package:NutriViet/features/auth/register_screen.dart';
-import 'package:NutriViet/features/home/main_home_screen.dart';
-import 'package:NutriViet/features/profile/health_profile_screen.dart';
+import 'package:ScAllergen/core/constants/colors.dart';
+import 'package:ScAllergen/features/auth/register_screen.dart';
+import 'package:ScAllergen/features/home/main_home_screen.dart';
+import 'package:ScAllergen/features/profile/health_profile_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

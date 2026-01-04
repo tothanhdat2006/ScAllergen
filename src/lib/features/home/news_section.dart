@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:NutriViet/core/constants/colors.dart';
-import 'package:NutriViet/core/services/news_service.dart';
-import 'package:NutriViet/features/home/news_detail_screen.dart';
+import 'package:ScAllergen/core/constants/colors.dart';
+import 'package:ScAllergen/core/services/news_service.dart';
+import 'package:ScAllergen/features/home/news_detail_screen.dart';
 
 class NewsSection extends StatelessWidget {
   const NewsSection({super.key});

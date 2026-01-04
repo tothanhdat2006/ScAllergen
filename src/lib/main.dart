@@ -74,7 +74,7 @@ Future<void> main() async {
     ValueListenableBuilder<ThemeMode>(
       valueListenable: ThemeService.instance.themeModeNotifier,
       builder: (context, currentMode, child) {
-        return NutriVietApp(
+        return ScAllergenApp(
           initialScreen: targetScreen,
           themeMode: currentMode,
         );

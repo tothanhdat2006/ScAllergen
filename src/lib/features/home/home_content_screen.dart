@@ -1,7 +1,7 @@
 // lib/features/home/presentation/home_content_screen.dart
 import 'package:flutter/material.dart';
-import 'package:NutriViet/features/home/header_widget.dart';
-import 'package:NutriViet/features/home/news_section.dart';
+import 'package:ScAllergen/features/home/header_widget.dart';
+import 'package:ScAllergen/features/home/news_section.dart';
 
 class HomeContentScreen extends StatefulWidget {
   const HomeContentScreen({super.key});

@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:NutriViet/core/models/allergy_match_result.dart';
+import 'package:ScAllergen/core/models/allergy_match_result.dart';
 
 class AllergyCheckService {
   static const String _baseUrl = 'https://XXX.ngrok-free.app';

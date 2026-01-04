@@ -2,10 +2,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:NutriViet/core/constants/colors.dart';
-import 'package:NutriViet/features/profile/profile_screen.dart';
-import 'package:NutriViet/features/scanner/ocr/scanner_screen.dart';
-import 'package:NutriViet/features/community/community_screen.dart';
+import 'package:ScAllergen/core/constants/colors.dart';
+import 'package:ScAllergen/features/profile/profile_screen.dart';
+import 'package:ScAllergen/features/scanner/ocr/scanner_screen.dart';
+import 'package:ScAllergen/features/community/community_screen.dart';
 import 'home_content_screen.dart';
 
 class MainHomeScreen extends StatefulWidget {

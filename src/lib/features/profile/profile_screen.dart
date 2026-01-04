@@ -5,10 +5,10 @@ import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:NutriViet/core/services/theme_service.dart';
-import 'package:NutriViet/core/constants/colors.dart';
-import 'package:NutriViet/features/auth/login_screen.dart';
-import 'package:NutriViet/features/profile/health_profile_screen.dart';
+import 'package:ScAllergen/core/services/theme_service.dart';
+import 'package:ScAllergen/core/constants/colors.dart';
+import 'package:ScAllergen/features/auth/login_screen.dart';
+import 'package:ScAllergen/features/profile/health_profile_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});

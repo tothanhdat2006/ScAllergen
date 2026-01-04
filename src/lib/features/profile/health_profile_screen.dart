@@ -7,9 +7,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:http/http.dart' as http;
-import 'package:NutriViet/core/constants/colors.dart';
-import 'package:NutriViet/core/services/allergy_check_service.dart';
-import 'package:NutriViet/features/home/main_home_screen.dart';
+import 'package:ScAllergen/core/constants/colors.dart';
+import 'package:ScAllergen/core/services/allergy_check_service.dart';
+import 'package:ScAllergen/features/home/main_home_screen.dart';
 
 class HealthProfileScreen extends StatefulWidget {
   final bool isEditing;

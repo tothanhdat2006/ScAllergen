@@ -1,13 +1,13 @@
 // lib/app/app.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:NutriViet/core/constants/colors.dart';
+import 'package:ScAllergen/core/constants/colors.dart';
 
-class NutriVietApp extends StatelessWidget {
+class ScAllergenApp extends StatelessWidget {
   final Widget initialScreen;
   final ThemeMode themeMode;
 
-  const NutriVietApp({
+  const ScAllergenApp({
     super.key,
     required this.initialScreen,
     required this.themeMode,
@@ -16,7 +16,7 @@ class NutriVietApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'NutriViet',
+      title: 'ScAllergen',
       debugShowCheckedModeBanner: false,
 
       locale: const Locale('en', 'US'),

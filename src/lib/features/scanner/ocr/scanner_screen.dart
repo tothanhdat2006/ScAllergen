@@ -3,8 +3,8 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:NutriViet/core/constants/colors.dart';
-import 'package:NutriViet/features/scanner/ocr/result_screen.dart';
+import 'package:ScAllergen/core/constants/colors.dart';
+import 'package:ScAllergen/features/scanner/ocr/result_screen.dart';
 
 class ScannerScreen extends StatefulWidget {
   const ScannerScreen({super.key});

@@ -1,7 +1,7 @@
 // lib/features/home/news_detail_screen.dart
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-import 'package:NutriViet/core/constants/colors.dart';
+import 'package:ScAllergen/core/constants/colors.dart';
 
 class NewsDetailScreen extends StatefulWidget {
   final String newsUrl;

@@ -1,7 +1,7 @@
 // lib/features/scanner/welcome_screen.dart
 import 'package:flutter/material.dart';
-import 'package:NutriViet/core/constants/colors.dart';
-import 'package:NutriViet/features/auth/login_screen.dart';
+import 'package:ScAllergen/core/constants/colors.dart';
+import 'package:ScAllergen/features/auth/login_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});

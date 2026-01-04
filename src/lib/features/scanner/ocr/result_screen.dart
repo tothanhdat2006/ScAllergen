@@ -1,10 +1,10 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:NutriViet/core/constants/colors.dart';
-import 'package:NutriViet/core/models/allergy_match_result.dart';
-import 'package:NutriViet/core/services/allergy_check_service.dart';
-import 'package:NutriViet/core/services/gemini_unified_service.dart';
-import 'package:NutriViet/core/services/social_service.dart';
+import 'package:ScAllergen/core/constants/colors.dart';
+import 'package:ScAllergen/core/models/allergy_match_result.dart';
+import 'package:ScAllergen/core/services/allergy_check_service.dart';
+import 'package:ScAllergen/core/services/gemini_unified_service.dart';
+import 'package:ScAllergen/core/services/social_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';

@@ -1,4 +1,4 @@
-package com.nemchua.nutriviet
+package com.nemchua.scallergen
 
 import io.flutter.embedding.android.FlutterActivity
 

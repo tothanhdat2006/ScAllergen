@@ -472,78 +472,42 @@ The APK will be located at `build/app/outputs/flutter-apk/app-release.apk`
 ```
 ScAllergen/
 ├── src/                                        # Main application source
-│   ├── lib/
+│   ├── lib/                                    # Flutter application code
 │   │   ├── main.dart                           # Application entry point
 │   │   ├── app/
 │   │   │   └── app.dart                        # App widget configuration
-│   │   ├── core/
-│   │   │   ├── constants/
-│   │   │   │   ├── app_quotes.dart             # Motivational quotes
-│   │   │   │   └── colors.dart                 # App color scheme
-│   │   │   ├── models/
-│   │   │   │   └── allergy_match_result.dart   # Allergen match data models
+│   │   ├── core/                               # Core functionality
+│   │   │   ├── constants/                      # App-wide constants
+│   │   │   ├── models/                         # Data models
+│   │   │   │   └── allergy_match_result.dart   # Allergen match results
 │   │   │   └── services/
-│   │   │       ├── allergy_check_service.dart  # Backend API communication
-│   │   │       ├── gemini_unified_service.dart # Google Gemini AI integration
+│   │   │       ├── allergy_check_service.dart  # 🔧 Backend API communication
+│   │   │       ├── gemini_unified_service.dart # 🔧 Google Gemini AI integration
 │   │   │       ├── news_service.dart           # News feed service
-│   │   │       ├── social_service.dart         # Community features service
+│   │   │       ├── social_service.dart         # Community features
 │   │   │       └── theme_service.dart          # Theme management
-│   │   └── features/
-│   │       ├── auth/                           # Authentication screens
-│   │       │   ├── login_screen.dart
-│   │       │   └── register_screen.dart
-│   │       ├── community/                      # Community features
-│   │       │   ├── community_screen.dart
-│   │       │   └── community_result_screen.dart
-│   │       ├── home/                           # Home and news screens
-│   │       │   ├── main_home_screen.dart
-│   │       │   ├── home_content_screen.dart
-│   │       │   ├── header_widget.dart
-│   │       │   ├── news_section.dart
-│   │       │   └── news_detail_screen.dart
-│   │       ├── profile/                        # User profile management
-│   │       │   ├── profile_screen.dart
-│   │       │   └── health_profile_screen.dart
-│   │       ├── scanner/                        # OCR scanner feature
-│   │       │   └── ocr/
-│   │       └── welcome/
-│   │           └── welcome_screen.dart         # Onboarding screen
+│   │   └── features/                           # Feature modules
+│   │       ├── auth/                           # Authentication (login/register)
+│   │       ├── community/                      # Community & safety check
+│   │       ├── home/                           # Home screen & news feed
+│   │       ├── profile/                        # User & health profiles
+│   │       ├── scanner/                        # OCR ingredient scanning
+│   │       └── welcome/                        # Onboarding screen
 │   ├── assets/                                 # Static data files
-│   │   ├── Allergy_Ingredients_Detailed.csv    # Detailed allergen ingredients
-│   │   ├── Allergy_References.csv              # Allergen reference data
-│   │   ├── Allergy_Types.csv                   # Allergen type classifications
-│   │   ├── ingredient_translations.json        # Ingredient name translations
-│   │   ├── ingredients_metadata.csv            # Ingredient metadata
-│   │   ├── viendinhduong_food_metadata.csv     # Food nutrition metadata
-│   │   ├── viendinhduong_ingredient_metadata.csv
+│   │   ├── Allergy_*.csv                       # Allergen reference data
+│   │   ├── ingredient_translations.json        # Multilingual ingredient names
 │   │   └── images/                             # Image assets
-│   ├── android/                                # Android-specific configuration
-│   │   ├── app/
-│   │   │   ├── build.gradle.kts
-│   │   │   └── src/
-│   │   │       ├── debug/
-│   │   │       │   └── AndroidManifest.xml
-│   │   │       ├── main/
-│   │   │       │   └── AndroidManifest.xml
-│   │   │       └── profile/
-│   │   │           └── AndroidManifest.xml
-│   │   ├── build.gradle.kts
-│   │   ├── gradle.properties
-│   │   ├── settings.gradle.kts
-│   │   └── gradle/
-│   │       └── wrapper/
-│   ├── ios/                                    # iOS-specific configuration
-│   │   ├── Runner/
-│   │   ├── Runner.xcodeproj/
-│   │   ├── Runner.xcworkspace/
-│   │   └── RunnerTests/
-│   ├── devtools_options.yaml                   # Flutter DevTools configuration
-│   └── pubspec.yaml                            # Flutter dependencies
+│   ├── android/
+│   │   └── app/
+│   │       └── google-services.json            # 🔧 Firebase configuration (you add this)
+│   ├── pubspec.yaml                            # 🔧 Flutter dependencies
+│   └── devtools_options.yaml                   # DevTools configuration
 ├── Dockerfile                                  # Docker image for APK build
-├── build.bat                                   # Windows build script
-├── build.sh                                    # Linux/macOS build script
-├── LICENSE                                     # MIT License
+├── build.bat                                   # 🚀 Windows build script
+├── build.sh                                    # 🚀 Linux/macOS build script
 └── README.md                                   # This file
+
+🔧 = Configuration required    🚀 = Build/Run commands
 ```
 
 ---

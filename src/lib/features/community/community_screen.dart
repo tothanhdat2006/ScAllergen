@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:NutriViet/core/constants/colors.dart';
+import 'package:ScAllergen/core/constants/colors.dart';
 import 'package:timeago/timeago.dart' as timeago;
-import 'package:NutriViet/features/community/community_result_screen.dart';
+import 'package:ScAllergen/features/community/community_result_screen.dart';
 
 class CommunityScreen extends StatelessWidget {
   const CommunityScreen({super.key});

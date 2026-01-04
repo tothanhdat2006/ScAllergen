@@ -1,8 +1,8 @@
 // lib/features/auth/presentation/register_screen.dart
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:NutriViet/core/constants/colors.dart';
-import 'package:NutriViet/features/profile/health_profile_screen.dart';
+import 'package:ScAllergen/core/constants/colors.dart';
+import 'package:ScAllergen/features/profile/health_profile_screen.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});

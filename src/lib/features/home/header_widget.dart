@@ -6,8 +6,8 @@ import 'package:intl/intl.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:NutriViet/core/constants/colors.dart';
-import 'package:NutriViet/core/constants/app_quotes.dart';
+import 'package:ScAllergen/core/constants/colors.dart';
+import 'package:ScAllergen/core/constants/app_quotes.dart';
 
 class AppHeader extends StatelessWidget {
   const AppHeader({super.key});
