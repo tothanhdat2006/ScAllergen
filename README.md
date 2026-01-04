@@ -113,7 +113,7 @@ Before you begin, ensure you have the following:
 - **Firebase Project** - ([Create here](https://console.firebase.google.com/))
 
 **Choose one installation method:**
-- **Docker** - Quick APK build without Flutter SDK
+- **Docker** - Quick APK build without Flutter SDK (ensure 20GB of disk due to large image produced by docker build)
 - **Flutter SDK** - For development and local testing
 
 ---

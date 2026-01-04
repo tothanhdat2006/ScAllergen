@@ -10,7 +10,7 @@ if %errorlevel% neq 0 (
 
 
 echo Building Flutter APK...
-docker build -t flutter-app .
+docker build --no-cache -t flutter-app .
 if %errorlevel% neq 0 (
     echo ERROR: Docker build failed!
     pause

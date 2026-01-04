@@ -1,5 +1,5 @@
 echo "Building Flutter APK..."
-docker build -t flutter-app .
+docker build --no-cache -t flutter-app .
 
 echo "Extracting APK from the Docker container..."
 docker create --name temp-container flutter-app
